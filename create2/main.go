@@ -12,7 +12,7 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
-const leadingZeros = "000"
+const leadingZeros = "00000000"
 
 func keccak256(data []byte) []byte {
 	hash := crypto.Keccak256Hash(data)
@@ -59,7 +59,7 @@ func worker(ctx context.Context, deployer common.Address, initCode []byte, resul
 
 			if strings.HasPrefix(contractAddress.Hex()[2:], leadingZeros) {
 				log.Printf("Found a match with salt: %x\n", salt)
-				results <- contractAddress // Send the address to the results channel
+				results <- contractAddress
 				return
 			}
 		}
@@ -67,7 +67,7 @@ func worker(ctx context.Context, deployer common.Address, initCode []byte, resul
 }
 
 func main() {
-	deployerAddress := common.HexToAddress("0xFe71f3757B8c828dDbE21429308a504b0f665353")
+	deployerAddress := common.HexToAddress("yourDeployerAddressHere")
 
 	initCode := []byte("YourContractBytecodeHere")
 

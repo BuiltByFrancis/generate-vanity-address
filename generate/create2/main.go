@@ -13,7 +13,7 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
-const leadingZeros = "000000"
+const leadingZeros = "00000000"
 
 func HexToBytes(str string) []byte {
 	if len(str) >= 2 && str[:2] == "0x" {
@@ -76,8 +76,8 @@ func worker(ctx context.Context, deployer common.Address, initCodeHash []byte, r
 }
 
 func main() {
-	deployerAddress := common.HexToAddress("0xA84cC5Fa2595D8E29EE5419a82DBafE66cAdD2a3")
-	initCodeHash := HexToBytes("be3eddb81ffc2347c68df1746cc928f723d820046c661598ea67ace1f58ec397")
+	deployerAddress := common.HexToAddress("0xcfeA57885743b5C71Da9B1BaA94F21572A6abccb")
+	initCodeHash := HexToBytes("0x8774a50bcdbcd9f23899eaddc829f407273965470f504c5c85f0e51116802760")
 	
 	numWorkers := 20
 
